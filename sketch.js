@@ -5,17 +5,13 @@ let acel = 0.98;
 
 function setup() {
   createCanvas(windowWidth, windowHeight);
-  
- 
-rectMode(CENTER);
+  rectMode(CENTER);
   diam = random(10, 50);
-  rad = diam / 2; 
-  esp = 
-  esp = 
-20; // Modificamos esp a un valor más pequeño
-  piso = windowHeight * 0.9;
+  rad = diam / 2;
+  esp = 20;
+  piso = windowHeight;
   posX = windowWidth / 2;
-  posY = windowHeight * 0.2; // Modificamos la posición inicial de la pelota
+  posY = windowHeight * 0.2;
 }
 
 function draw() {
@@ -26,11 +22,11 @@ function draw() {
   fill(255, 200, 150);
   circle(posX, posY, diam);
   fill(100, 50, 0);
-  rect(windowWidth / 2, windowHeight - esp / 2, windowWidth, esp); // Modificamos el cálculo de la posición del rectángulo
+  rect(windowWidth / 2, piso, windowWidth, esp);
 
   function actualizar() {
-    velocidadY += acel;
     posY += velocidadY;
+    velocidadY += gravedad;
 
     if (posY >= piso - rad) {
       velocidadY *= -1;
